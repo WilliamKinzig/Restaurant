@@ -49,6 +49,17 @@ namespace RestaurantType.Tests
       //Assert
       CollectionAssert.AreEqual(result, testList);
     }
+    [TestMethod]
+    public void Find_FindsCorrectRestaurant_Restaurant()
+    {
+      //Arrange
+      Restaurant testRestaurant = new Restaurant("Pizza Hut", "Main St", 1);
+      //Act
+      testRestaurant.Save();
+      Restaurant result = Restaurant.Find(testRestaurant.GetId());
+      //Assert
+      Assert.AreEqual(result, testRestaurant);
+    }
     public void Dispose()
     {
       Restaurant.DeleteAll();

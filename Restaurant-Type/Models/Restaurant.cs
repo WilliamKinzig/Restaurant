@@ -85,10 +85,41 @@ namespace RestaurantType.Models
       return allRestaurants;
     }
 
-    // public static Restaurant Find(int id)
-    // {
-    // }
-    //
+    public static Restaurant Find(int id)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT * FROM restaurants WHERE id = @thisId";
+
+      cmd.Parameters.Add(new MySqlParameter("@thisId", id));
+
+      var rdr = cmd.ExecuteReader() as MySqlDataReader;
+
+      int restId = 0;
+      string restName = "";
+      string restLocation = "";
+      int categoryId = 0;
+
+      while (rdr.Read())
+      {
+         restId = rdr.GetInt32(0);
+         restName = rdr.GetString(1);
+         restLocation = rdr.GetString(2);
+         categoryId = rdr.GetInt32(3);
+      }
+
+      Restaurant foundRestaurant = new Restaurant(restName, restLocation, categoryId, restId);
+      Restaurant wrongRestaurant = new Restaurant("herp", "derp", 420, 666);
+
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+      return foundRestaurant;
+    }
     public static void DeleteAll()
     {
       MySqlConnection conn = DB.Connection();
@@ -104,10 +135,9 @@ namespace RestaurantType.Models
           conn.Dispose();
       }
     }
-    //
     public void Save()
     {
-      MySqlConnection conn= DB.Connection();
+      MySqlConnection conn = DB.Connection();
       conn.Open();
 
       var cmd = conn.CreateCommand() as MySqlCommand;
@@ -137,7 +167,6 @@ namespace RestaurantType.Models
         conn.Dispose();
       }
     }
-    //
     // public void Edit()
     // {
     // }
