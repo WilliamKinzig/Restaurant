@@ -167,9 +167,27 @@ namespace RestaurantType.Models
         conn.Dispose();
       }
     }
-    public void Edit()
+
+    public void Edit(string newName, string newLocation, int newCat)
     {
-    }    
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"UPDATE restaurants SET name = @newName, location = @newLocation, category_id = @newCatId WHERE id = @searchId;";
+
+      cmd.Parameters.Add(new MySqlParameter("@searchId", _id));
+      cmd.Parameters.Add(new MySqlParameter("@newName", newName));
+      cmd.Parameters.Add(new MySqlParameter("@newLocation", newLocation));
+      cmd.Parameters.Add(new MySqlParameter("@newCatId", newCat));
+
+      cmd.ExecuteNonQuery();
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+    }
+
     public void Delete()
     {
       MySqlConnection conn = DB.Connection();

@@ -70,9 +70,34 @@ namespace RestaurantType.Tests
       CollectionAssert.AreEqual(resultList, Restaurant.GetAll());
     }
     [TestMethod]
-    public void Edit_ChangesRestaurantData_Restaurant()
+    public void Edit_ChangesRestaurantName_String()
     {
-      
+      string newLocation = "Hell";
+      string firstRestaurant = "Taco Bell";
+      Restaurant testRestaurant = new Restaurant(firstRestaurant, newLocation, 1);
+      testRestaurant.Save();
+      string secondRestaurant = "Pizza Hut";
+
+      testRestaurant.Edit(secondRestaurant, newLocation, 1);
+
+      string result = Restaurant.Find(testRestaurant.GetId()).GetName();
+
+      Assert.AreEqual(result, secondRestaurant);
+    }
+    [TestMethod]
+    public void Edit_ChangesRestaurantLocation_String()
+    {
+      string firstLocation = "Hell";
+      string newRestaurant = "Taco Bell";
+      Restaurant testRestaurant = new Restaurant(newRestaurant, firstLocation, 1);
+      testRestaurant.Save();
+      string secondLocation="Heaven";
+
+      testRestaurant.Edit(newRestaurant, secondLocation, 1);
+
+      string result = Restaurant.Find(testRestaurant.GetId()).GetLocation();
+
+      Assert.AreEqual(result, secondLocation);
     }
     public void Dispose()
     {
