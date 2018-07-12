@@ -1,0 +1,8 @@
+/Users/Guest/Desktop/Restaurant-Type.Solution/Restaurant-Type/bin/Debug/netcoreapp1.1/Restaurant-Type.deps.json
+/Users/Guest/Desktop/Restaurant-Type.Solution/Restaurant-Type/bin/Debug/netcoreapp1.1/Restaurant-Type.runtimeconfig.json
+/Users/Guest/Desktop/Restaurant-Type.Solution/Restaurant-Type/bin/Debug/netcoreapp1.1/Restaurant-Type.runtimeconfig.dev.json
+/Users/Guest/Desktop/Restaurant-Type.Solution/Restaurant-Type/obj/Debug/netcoreapp1.1/Restaurant-Type.AssemblyInfo.cs
+/Users/Guest/Desktop/Restaurant-Type.Solution/Restaurant-Type/bin/Debug/netcoreapp1.1/Restaurant-Type.dll
+/Users/Guest/Desktop/Restaurant-Type.Solution/Restaurant-Type/bin/Debug/netcoreapp1.1/Restaurant-Type.pdb
+/Users/Guest/Desktop/Restaurant-Type.Solution/Restaurant-Type/obj/Debug/netcoreapp1.1/Restaurant-Type.dll
+/Users/Guest/Desktop/Restaurant-Type.Solution/Restaurant-Type/obj/Debug/netcoreapp1.1/Restaurant-Type.pdb
