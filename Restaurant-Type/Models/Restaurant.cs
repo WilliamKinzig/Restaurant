@@ -167,13 +167,30 @@ namespace RestaurantType.Models
         conn.Dispose();
       }
     }
-    // public void Edit()
-    // {
-    // }
-    //
-    // public void Delete()
-    // {
-    // }
+    public void Edit()
+    {
+    }    
+    public void Delete()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"DELETE FROM restaurants WHERE id = @thisId";
+
+      MySqlParameter searchId = new MySqlParameter();
+      searchId.ParameterName = "@thisId";
+      searchId.Value = _id;
+      cmd.Parameters.Add(searchId);
+
+      cmd.ExecuteNonQuery();
+
+      conn.Close();
+      if (conn != null)
+      {
+          conn.Dispose();
+      }
+    }
 
   }
 }

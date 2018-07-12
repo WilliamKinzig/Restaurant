@@ -60,9 +60,25 @@ namespace RestaurantType.Tests
       //Assert
       Assert.AreEqual(result, testRestaurant);
     }
+    [TestMethod]
+    public void Delete_DeletesRestaurantFromDB_RestaurantList()
+    {
+      Restaurant newRestaurant = new Restaurant("Pizza Hut", "Main St", 1);
+      newRestaurant.Save();
+      List<Restaurant> resultList = new List<Restaurant>{};
+      newRestaurant.Delete();
+      CollectionAssert.AreEqual(resultList, Restaurant.GetAll());
+    }
+    [TestMethod]
+    public void Edit_ChangesRestaurantData_Restaurant()
+    {
+      
+    }
     public void Dispose()
     {
       Restaurant.DeleteAll();
     }
+
   }
+
 }
